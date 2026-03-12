@@ -1,0 +1,120 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 2rem;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.glass-nav {
+    padding: 1rem 2rem;
+    background: rgba(5, 5, 5, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+}
+
+.desktop-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: var(--transition);
+}
+
+.nav-link:hover {
+    color: var(--text-primary);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.mobile-toggle {
+    display: none;
+    cursor: pointer;
+    color: var(--text-primary);
+    z-index: 1001;
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transition: var(--transition);
+    background: rgba(5, 5, 5, 0.95);
+    z-index: 999;
+}
+
+.mobile-menu.open {
+    right: 0;
+}
+
+.mobile-link {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.mobile-link:hover {
+    color: var(--accent-neon);
+}
+
+@media (max-width: 768px) {
+    .desktop-menu {
+        display: none;
+    }
+
+    .mobile-toggle {
+        display: block;
+    }
+
+    .navbar {
+        padding: 1rem;
+    }
+
+    .glass-nav {
+        padding: 1rem;
+    }
+}

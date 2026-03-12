@@ -1,0 +1,47 @@
+.app-container {
+  min-height: 100vh;
+  position: relative;
+}
+
+#custom-cursor,
+#cursor-follower {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+#custom-cursor {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-neon);
+  box-shadow: 0 0 10px var(--accent-neon);
+  transition: width 0.2s, height 0.2s;
+}
+
+#cursor-follower {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--accent-purple);
+  transition: width 0.3s, height 0.3s;
+}
+
+/* Hide standard cursor and show custom cursor for non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none;
+  }
+}
+
+@media (max-width: 768px) {
+
+  #custom-cursor,
+  #cursor-follower {
+    display: none;
+  }
+
+  * {
+    cursor: auto !important;
+  }
+}
