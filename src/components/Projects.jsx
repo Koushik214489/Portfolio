@@ -18,7 +18,6 @@ const ProjectCard = ({ project }) => {
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
 
-        // Rotate relative to distance from center (max 15 degrees)
         const rotateX = ((y - centerY) / centerY) * -15;
         const rotateY = ((x - centerX) / centerX) * 15;
 
@@ -48,15 +47,18 @@ const ProjectCard = ({ project }) => {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
         >
+
             <div className="card-glow" style={{ opacity: isHovered ? 1 : 0 }}></div>
 
             <div className="project-header">
                 <MonitorPlay className="project-icon" size={36} />
+
                 <div className="project-links">
                     <a href={project.githubLink} target="_blank" rel="noreferrer" className="project-link">
                         <Github size={20} />
                     </a>
-                    <a href="#live" target="_blank" rel="noreferrer" className="project-link">
+
+                    <a href={project.demoLink} target="_blank" rel="noreferrer" className="project-link">
                         <ExternalLink size={20} />
                     </a>
                 </div>
@@ -75,33 +77,49 @@ const ProjectCard = ({ project }) => {
                 <a href={project.githubLink} target="_blank" rel="noreferrer" className="glow-btn secondary small-btn">
                     View Code
                 </a>
-                <a href="#demo" className="glow-btn small-btn">
+
+                <a href={project.demoLink} target="_blank" rel="noreferrer" className="glow-btn small-btn">
                     Live Demo
                 </a>
             </div>
+
         </motion.div>
     );
 };
 
 const Projects = () => {
+
     const projects = [
         {
             title: "SubWave – Digital Subscription Manager",
             description: "SubWave is a full-stack platform that helps users track and manage digital subscriptions across services. It centralizes subscription information and provides insights about renewal schedules and usage.",
-            techStack: ["React.js", "Node.js", "Express.js", "MongoDB", "OAuth 2.0", "REST APIs", "Tailwind CSS"],
-            githubLink: "https://github.com/Koushik214489/S70_Koushik_Capstone_Sub_wave"
+            techStack: [
+                "React.js",
+                "Node.js",
+                "Express.js",
+                "MongoDB",
+                "OAuth 2.0",
+                "REST APIs",
+                "Tailwind CSS"
+            ],
+            githubLink: "https://github.com/Koushik214489/S70_Koushik_Capstone_Sub_wave",
+            demoLink: "https://subwavee.netlify.app/"
         }
     ];
 
     return (
         <section id="projects" className="projects-section">
-            <h2 className="section-title">Featured <span className="gradient-text">Projects</span></h2>
+
+            <h2 className="section-title">
+                Featured <span className="gradient-text">Projects</span>
+            </h2>
 
             <div className="projects-grid">
                 {projects.map((project, idx) => (
                     <ProjectCard key={idx} project={project} />
                 ))}
             </div>
+
         </section>
     );
 };
